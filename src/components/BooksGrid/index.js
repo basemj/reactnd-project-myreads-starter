@@ -1,11 +1,15 @@
 import React from 'react';
 import Book from '../Book';
 
-function BooksGrid() {
+function BooksGrid(props) {
   return <ol className="books-grid">
-    <li>
-      <Book />
-    </li>
+    {
+      props.books.map(book => (
+        <li>
+          <Book book={book} />
+        </li>
+      ))
+    }
   </ol>
 };
 
