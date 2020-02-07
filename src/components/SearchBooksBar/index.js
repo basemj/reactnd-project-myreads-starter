@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function SearchBooksBar(props) {
+function SearchBooksBar({onSearchChange, query}) {
   return <div className="search-books-bar">
     <Link to="/">
       <button className="close-search">Close</button>
@@ -16,7 +16,7 @@ function SearchBooksBar(props) {
         However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
         you don't find a specific author or title. Every search is limited by search terms.
       */}
-      <input type="text" onChange={props.onSearchChange} value={props.query} placeholder="Search by title or author"/>
+      <input type="text" onChange={onSearchChange} value={query} placeholder="Search by title or author"/>
     </div>
   </div>
 };

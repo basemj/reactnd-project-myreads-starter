@@ -2,12 +2,7 @@ import React from 'react';
 import Bookshelf from '../../components/Bookeshelf';
 import { Link } from 'react-router-dom';
 
-function Home(props) {
-  const {
-    onShelfChange,
-    organisedBooks
-  } = props;
-
+function Home({onShelfChange, organisedBooks}) {
   const {
     currentlyReading,
     wantToRead,

@@ -1,12 +1,7 @@
 import React from 'react';
 import Book from '../Book';
 
-function BooksGrid(props) {
-  const {
-    books,
-    onShelfChange
-  } = props;
-
+function BooksGrid({books, onShelfChange}) {
   return <ol className="books-grid">
     {
       books && books.map(book => (

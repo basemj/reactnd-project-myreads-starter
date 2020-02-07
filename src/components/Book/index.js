@@ -1,11 +1,6 @@
 import React from 'react';
 
-function Book(props) {
-  const {
-    book,
-    onShelfChange
-  } = props;
-
+function Book({book, onShelfChange}) {
   const {
     imageLinks,
     title,
