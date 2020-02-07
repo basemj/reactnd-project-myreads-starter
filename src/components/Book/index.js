@@ -9,7 +9,7 @@ function Book(props) {
 
   return <div className="book">
     <div className="book-top">
-      <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${imageLinks.smallThumbnail}")` }}></div>
+      <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${imageLinks && imageLinks.smallThumbnail}")` }}></div>
       <div className="book-shelf-changer">
         <select>
           <option value="move" disabled>Move to...</option>
@@ -21,7 +21,7 @@ function Book(props) {
       </div>
     </div>
     <div className="book-title">{title}</div>
-    <div className="book-authors">{authors.join(', ')}</div>
+    <div className="book-authors">{authors && authors.join(', ')}</div>
   </div>
 };
 
