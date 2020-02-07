@@ -43,8 +43,16 @@ class Search extends React.Component {
             searching: false
           });
         } else {
+          const myBooks = this.props.books
+          
+          const results = resp.map(book => {
+            const matchingBookInCollection = myBooks.find(myBook => myBook.id === book.id);
+            book.shelf = matchingBookInCollection ? matchingBookInCollection.shelf : 'none';
+            return book;
+          })
+
           this.setState({
-            results: resp,
+            results,
             searching: false
           });
         }

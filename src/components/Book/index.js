@@ -4,14 +4,15 @@ function Book(props) {
   const {
     imageLinks,
     title,
-    authors
+    authors,
+    shelf
   } = props.book;
 
   return <div className="book">
     <div className="book-top">
       <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${imageLinks && imageLinks.smallThumbnail}")` }}></div>
       <div className="book-shelf-changer">
-        <select>
+        <select value={shelf}>
           <option value="move" disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>
