@@ -24,7 +24,9 @@ class BooksApp extends React.Component {
 
   updateBooksList(books) {
     const organisedBooks = books.reduce((current, book) => {
-      current[book.shelf].push(book);
+      if (book.shelf !== 'none') {
+        current[book.shelf].push(book);
+      }
       return current;
     }, {
       currentlyReading: [],
@@ -40,12 +42,10 @@ class BooksApp extends React.Component {
     const filteredBooks = this.state.books.filter(currentBook => currentBook.id !== book.id);
     book.shelf = shelf;
 
-    const updatedBooks = [
+    const updatedBooks = shelf === 'none' ? filteredBooks : [
       ...filteredBooks,
       book
     ]
-
-    this.setState({books: updatedBooks});
 
     update(book, shelf).then(() => {
       this.updateBooksList(updatedBooks);
