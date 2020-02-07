@@ -56,8 +56,8 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <BrowserRouter>
-          <Route exact path="/" component={() => <Home organisedBooks={this.state.organisedBooks} onShelfChange={this.changeShelf} />} />
-          <Route exact path="/search" component={() => <Search books={this.state.books} onShelfChange={this.changeShelf} />} />
+          <Route exact path="/" render={() => <Home organisedBooks={this.state.organisedBooks} onShelfChange={this.changeShelf} />} />
+          <Route exact path="/search" render={() => <Search books={this.state.books} onShelfChange={this.changeShelf} />} />
         </BrowserRouter>
       </div>
     )
