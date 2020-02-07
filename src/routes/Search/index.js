@@ -61,10 +61,16 @@ class Search extends React.Component {
   }
 
   render() {
+    const {
+      query,
+      searching,
+      results
+    } = this.state;
+
     return <div className="search-books">
-      <SearchBooksBar query={this.state.query} onSearchChange={this.debounceUpdateQuery} />
+      <SearchBooksBar query={query} onSearchChange={this.debounceUpdateQuery} />
       <div className="search-books-results">
-        { this.state.searching ? <span>Searching...</span> : <BooksGrid books={this.state.results} /> }
+        { searching ? <span>Searching...</span> : <BooksGrid books={results} onShelfChange={this.props.onShelfChange} /> }
       </div>
     </div>
   }

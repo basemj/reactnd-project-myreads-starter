@@ -4,10 +4,15 @@ import { Link } from 'react-router-dom';
 
 function Home(props) {
   const {
+    onShelfChange,
+    organisedBooks
+  } = props;
+
+  const {
     currentlyReading,
     wantToRead,
     read
-  } = props.organisedBooks;
+  } = organisedBooks;
 
   return <div className="list-books">
     <div className="list-books-title">
@@ -15,9 +20,9 @@ function Home(props) {
     </div>
     <div className="list-books-content">
       <div>
-        <Bookshelf title="Currently Reading" books={currentlyReading} />
-        <Bookshelf title="Want to Read" books={wantToRead} />
-        <Bookshelf title="Read" books={read} />
+        <Bookshelf title="Currently Reading" books={currentlyReading} onShelfChange={onShelfChange} />
+        <Bookshelf title="Want to Read" books={wantToRead} onShelfChange={onShelfChange} />
+        <Bookshelf title="Read" books={read} onShelfChange={onShelfChange} />
       </div>
     </div>
     <div className="open-search">

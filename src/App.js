@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAll } from './BooksAPI'
+import { getAll, update } from './BooksAPI'
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './routes/Home';
@@ -25,17 +25,38 @@ class BooksApp extends React.Component {
     const organisedBooks = books.reduce((current, book) => {
       current[book.shelf].push(book);
       return current;
-    }, this.state.organisedBooks)
+    }, {
+      currentlyReading: [],
+      wantToRead: [],
+      read: []
+    })
   
     this.setState({books, organisedBooks});
+  }
+
+  changeShelf = (book, event) => {
+    const shelf = event.target.value;
+    const filteredBooks = this.state.books.filter(currentBook => currentBook.id !== book.id);
+    book.shelf = shelf;
+
+    const updatedBooks = [
+      ...filteredBooks,
+      book
+    ]
+
+    this.setState({books: updatedBooks});
+
+    update(book, shelf).then(() => {
+      this.updateBooksList(updatedBooks);
+    });
   }
   
   render() {
     return (
       <div className="app">
         <BrowserRouter>
-          <Route exact path="/" component={() => <Home organisedBooks={this.state.organisedBooks} />} />
-          <Route exact path="/search" component={() => <Search books={this.state.books} />} />
+          <Route exact path="/" component={() => <Home organisedBooks={this.state.organisedBooks} onShelfChange={this.changeShelf} />} />
+          <Route exact path="/search" component={() => <Search books={this.state.books} onShelfChange={this.changeShelf} />} />
         </BrowserRouter>
       </div>
     )
