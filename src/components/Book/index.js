@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Book({book, onShelfChange}) {
   const {
@@ -25,5 +26,10 @@ function Book({book, onShelfChange}) {
     <div className="book-authors">{authors && authors.join(', ')}</div>
   </div>
 };
+
+Book.prototypes = {
+  book: PropTypes.object.isRequired,
+  onShelfChange: PropTypes.func.isRequired
+}
 
 export default Book;

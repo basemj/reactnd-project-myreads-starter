@@ -1,6 +1,8 @@
 import React from 'react';
-import Bookshelf from '../../components/Bookeshelf';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import Bookshelf from '../../components/Bookeshelf';
 
 function Home({onShelfChange, organisedBooks}) {
   const {
@@ -28,5 +30,10 @@ function Home({onShelfChange, organisedBooks}) {
     </div>
   </div>
 };
+
+Home.prototypes = {
+  onShelfChange: PropTypes.func.isRequired,
+  organisedBooks: PropTypes.array.isRequired
+}
 
 export default Home;

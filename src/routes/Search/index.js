@@ -1,9 +1,17 @@
 import React from 'react';
 import { search } from '../../BooksAPI';
+import PropTypes from 'prop-types';
+
 import SearchBooksBar from '../../components/SearchBooksBar';
 import BooksGrid from '../../components/BooksGrid';
 
 class Search extends React.Component {
+
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    onShelfChange: PropTypes.func.isRequired
+  }
+
   state = {
     query: '',
     searching: false,

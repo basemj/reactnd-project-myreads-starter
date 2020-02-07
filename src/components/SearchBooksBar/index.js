@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function SearchBooksBar({onSearchChange, query}) {
   return <div className="search-books-bar">
@@ -20,5 +21,10 @@ function SearchBooksBar({onSearchChange, query}) {
     </div>
   </div>
 };
+
+SearchBooksBar.prototypes = {
+  onSearchChange: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired
+}
 
 export default SearchBooksBar;
